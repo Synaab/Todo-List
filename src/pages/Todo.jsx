@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom'
 export default function Todo() {
   const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState('')
-  const [showInput, setShowInput] = useState(false) // کنترل نمایش فیلد اضافه کردن تسک
-  const [username, setUsername] = useState('') // اضافه کردم
+  const [showInput, setShowInput] = useState(false) 
+  const [username, setUsername] = useState('') 
   const navigate = useNavigate()
 
-  // واکشی نام کاربر
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (!token) {
