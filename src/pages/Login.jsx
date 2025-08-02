@@ -17,7 +17,6 @@ export default function Login() {
                 username,
                 password,
             })
-            // توکن JWT رو در localStorage ذخیره می‌کنیم
             localStorage.setItem('token', res.data.token)
             navigate('/todo')
         } catch (err) {
