@@ -4,9 +4,8 @@ import jwt from 'jsonwebtoken'
 import { connectDB } from './db.js'
 
 const router = express.Router()
-const SECRET = 'my_super_secret' // در پروژه واقعی اینو امن‌تر نگه دار
+const SECRET = 'my_super_secret' 
 
-// ساخت جدول کاربر اگر وجود نداره
 const initDB = async () => {
     const db = await connectDB()
     await db.exec(`CREATE TABLE IF NOT EXISTS users (
@@ -17,7 +16,6 @@ const initDB = async () => {
 }
 initDB()
 
-// ثبت‌نام
 router.post('/signup', async (req, res) => {
     const { username, password } = req.body
     const db = await connectDB()
@@ -31,7 +29,6 @@ router.post('/signup', async (req, res) => {
     }
 })
 
-// لاگین
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     const db = await connectDB()
@@ -46,7 +43,6 @@ router.post('/login', async (req, res) => {
     res.json({ token })
 })
 
-// Middleware برای چک کردن توکن و استخراج userId
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
@@ -59,7 +55,6 @@ function authenticateToken(req, res, next) {
   })
 }
 
-// روت برای دریافت اطلاعات یوزر
 router.get('/me', authenticateToken, async (req, res) => {
   const db = await connectDB()
   const user = await db.get(`SELECT id, username FROM users WHERE id = ?`, [req.user.id])
