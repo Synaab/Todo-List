@@ -18,7 +18,7 @@ export default function Signup() {
                 password,
             })
             alert(res.data.message)
-            navigate('/')  // بعد از ثبت‌نام می‌ریم لاگین
+            navigate('/')
         } catch (err) {
             setError(err.response?.data?.error || 'Error occurred')
         }
