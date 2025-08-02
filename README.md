@@ -9,12 +9,6 @@ A clean and responsive full-stack **Todo List** application built with:
 
 ---
 
-## 📸 Preview
-
-*(Insert screenshot here if available)*
-
----
-
 ## ✨ Features
 
 - 🔐 User authentication (Sign up / Login)
